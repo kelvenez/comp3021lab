@@ -34,10 +34,13 @@ public class TestLab2 {
 			if (b) numSucceed++;
 			b = nb.createTextNote("study", "Photography");
 			if (b) numSucceed++;
-			
+
+			nb.sortFolders();
+
 			System.out.println("Successfully created " + numSucceed + " notes");
 			for(Folder f : nb.getFolders()){
 				System.out.println(f.toString());
 			}
+
 		}
 	}
