@@ -1,9 +1,10 @@
 package base;
+import java.io.*;
 import java.util.*;
 
-public class NoteBook {
+public class NoteBook implements Serializable {
     private ArrayList<Folder> folders;
-
+    private static final long serialVersionUID = 1L;
     public NoteBook(){
         this.folders = new ArrayList<Folder>();
     }
@@ -69,5 +70,39 @@ public class NoteBook {
         }
         return result_note;
     }
+    /*
+    @param file, the path of the file where to save the object serialization
+    @return true if save on file successful, false otherwise
+     */
+    public boolean save(String file){
+        //TODO
+        FileOutputStream fos = null;
+        ObjectOutputStream out = null;
+        try{
+            fos = new FileOutputStream(file);
+            out = new ObjectOutputStream(fos);
+            out.writeObject(this);
+            out.close();
+            fos.close();
+        }catch(Exception e) {
+            return false;
+        }
+        return true;
+    }
 
+    /* @ param file = path */
+    public NoteBook(String file){
+        FileInputStream fis = null;
+        ObjectInputStream in = null;
+        try{
+            fis = new FileInputStream(file);
+            in = new ObjectInputStream(fis);
+            NoteBook n = (NoteBook) in.readObject();
+            this.folders = n.getFolders();
+            in.close();
+            fis.close();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
