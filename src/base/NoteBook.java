@@ -75,7 +75,6 @@ public class NoteBook implements Serializable {
     @return true if save on file successful, false otherwise
      */
     public boolean save(String file){
-        //TODO
         FileOutputStream fos = null;
         ObjectOutputStream out = null;
         try{
