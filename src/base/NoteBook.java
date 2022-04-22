@@ -9,6 +9,11 @@ public class NoteBook implements Serializable {
         this.folders = new ArrayList<Folder>();
     }
 
+    public void addFolder(String folderName){
+        Folder f = new Folder(folderName);
+        folders.add(f);
+    }
+
     public boolean createTextNote(String folderName , String title ){
             TextNote note = new TextNote(title);
             return insertNote(folderName,note);
@@ -28,7 +33,6 @@ public class NoteBook implements Serializable {
     public ArrayList<Folder> getFolders() {
         return folders;
     }
-
     public boolean insertNote(String folderName , Note note) {
         Folder tempFolder = null;
         for (Folder folder : folders) {

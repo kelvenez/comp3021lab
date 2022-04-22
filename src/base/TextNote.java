@@ -15,11 +15,15 @@ public class TextNote extends Note{
     }
     public String getContent(){return this.content;}
 
+    public void setContent(String content) {
+        this.content = content;
+    }
+
     /* load a TextNote from File f
-       the tile of the TextNote is the name of the file
-       the content of the TextNote is the content of the file
-       @param File f
-     */
+           the tile of the TextNote is the name of the file
+           the content of the TextNote is the content of the file
+           @param File f
+         */
     public TextNote(File f){
         super(f.getName());
         this.content = getTextFromFile(f.getAbsolutePath());
